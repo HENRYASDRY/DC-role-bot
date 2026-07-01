@@ -24,8 +24,6 @@ const allowedChannelIds = process.env.ALLOWED_CHANNEL_IDS ? process.env.ALLOWED_
 const specificChannelId = process.env.SPECIFIC_CHANNEL_ID;// 回報刪除/編輯訊息的頻道 ID
 
 // ✅ 註冊 Slash 指令 `/addroles`
-const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
-
 const commands = [
     new SlashCommandBuilder()
         .setName("addroles")
