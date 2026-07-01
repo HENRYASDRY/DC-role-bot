@@ -63,7 +63,7 @@ client.on("interactionCreate", async (interaction) => {
 
         const embed = new EmbedBuilder()
             .setColor("#0099ff")
-            .setTitle("🎭 點擊按鈕領取身份組")
+            .setTitle("🎭 點擊領取身份組才能查看頻道喔!")
             .setDescription("點擊下方按鈕領取所選身份組！");
 
         const row = new ActionRowBuilder().addComponents(
