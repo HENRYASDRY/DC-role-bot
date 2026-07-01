@@ -1,3 +1,7 @@
+if (!process.env.TOKEN) {
+    console.error("❌ 錯誤：未找到 TOKEN 環境變數！");
+    process.exit(1);
+}
 require("dotenv").config();
 const { 
     Client, GatewayIntentBits, REST, Routes, 
@@ -15,8 +19,9 @@ const client = new Client({
 });
 
 // ✅ 設定允許監聽的頻道與回報頻道
-const allowedChannelIds = ['1194247484390768702', '1335029241141792768']; // 允許監聽的頻道 ID
-const specificChannelId = '1334454299186696194'; // 回報刪除/編輯訊息的頻道 ID
+// ✅ 從 .env 讀取並處理成陣列
+const allowedChannelIds = process.env.ALLOWED_CHANNEL_IDS ? process.env.ALLOWED_CHANNEL_IDS.split(',') : [];// 允許監聽的頻道 ID
+const specificChannelId = process.env.SPECIFIC_CHANNEL_ID;// 回報刪除/編輯訊息的頻道 ID
 
 // ✅ 註冊 Slash 指令 `/addroles`
 const commands = [
