@@ -27,7 +27,7 @@ const specificChannelId = process.env.SPECIFIC_CHANNEL_ID;// 回報刪除/編輯
 const commands = [
     new SlashCommandBuilder()
         .setName("addroles")
-        .setDescription("創建一個按鈕來領取多個身份組")
+        .setDescription("創建一個按鈕來領多個身份組")
         // 設定只有管理員權限者可見/使用
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addRoleOption(option => option.setName("role1").setDescription("選擇身份組 1").setRequired(true))
