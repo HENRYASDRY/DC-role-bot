@@ -208,5 +208,21 @@ app.listen(port, () => {
     console.log("🌐 Web Server is running on port " + port);
 });
 
-// ✅ 登入 Discord 機器人
-client.login(process.env.TOKEN);
+// ✅ 監聽 Discord 連線錯誤與限流警告（幫助在 Render Logs 抓蟲）
+client.on("error", (error) => {
+    console.error("❌ Discord Client 發生錯誤：", error);
+});
+
+client.rest.on("rateLimited", (info) => {
+    console.warn("⚠️ 遭到 Discord API 限流 (Rate Limited)：", info);
+});
+
+// ✅ 登入 Discord 機器人並印出狀態
+console.log("⏳ 正在嘗試連線至 Discord...");
+client.login(process.env.TOKEN)
+    .then(() => {
+        console.log("🔑 Token 驗證通過，等待 Ready 事件...");
+    })
+    .catch((error) => {
+        console.error("❌ 登入 Discord 失敗：", error);
+    });
